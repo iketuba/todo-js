@@ -189,8 +189,26 @@ var onClickAdd = function onClickAdd() {
   var li = document.createElement("li");
   li.innerText = inputText;
 
+  // button(完了)生成
+  var completeButton = document.createElement("button");
+  completeButton.innerText = "完了";
+  completeButton.addEventListener("click", function () {
+    alert("完了");
+  });
+
+  // button(削除)生成
+  var deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", function () {
+    // 押された削除ボタンの親タグ(div)を未完了リストから削除
+    var deleteTarget = deleteButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(deleteTarget);
+  });
+
   // divの子要素に各要素を設定
   div.appendChild(li);
+  div.appendChild(completeButton);
+  div.appendChild(deleteButton);
 
   // 未完了のリストに追加
   document.getElementById("incomplete-list").appendChild(div);
