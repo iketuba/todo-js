@@ -192,7 +192,12 @@ var onClickAdd = function onClickAdd() {
   // button(完了)生成
   var completeButton = document.createElement("button");
   completeButton.innerText = "完了";
-  completeButton.addEventListener("click", function () {});
+  completeButton.addEventListener("click", function () {
+    // 押された完了ボタンの親タグ(div)を未完了リストから削除
+    var completeTarget = completeButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(completeTarget);
+    // 押された完了ボタンの親タグ(div)を完了リストに追加
+  });
 
   // button(削除)生成
   var deleteButton = document.createElement("button");
