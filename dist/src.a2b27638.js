@@ -180,14 +180,23 @@ var onClickAdd = function onClickAdd() {
   // テキストボックスの値を取得し、初期化する
   var inputText = document.getElementById("add-text").value;
   document.getElementById("add-text").value = "";
+  createIncompleteList(inputText);
+};
 
+// 未完了リストから指定の要素を削除
+var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
+  document.getElementById("incomplete-list").removeChild(target);
+};
+
+// 未完了リストに追加する関数
+var createIncompleteList = function createIncompleteList(text) {
   // div生成
   var div = document.createElement("div");
   div.className = "list-row";
 
   // li生成
   var li = document.createElement("li");
-  li.innerText = inputText;
+  li.innerText = text;
 
   // button(完了)生成
   var completeButton = document.createElement("button");
@@ -219,6 +228,7 @@ var onClickAdd = function onClickAdd() {
 
       // テキスト取得
       var text = backButton.parentNode.firstElementChild.innerText;
+      createIncompleteList(text);
     });
 
     // divタグの子要素に各要素を設定
@@ -244,11 +254,6 @@ var onClickAdd = function onClickAdd() {
 
   // 未完了のリストに追加
   document.getElementById("incomplete-list").appendChild(div);
-};
-
-// 未完了リストから指定の要素を削除
-var deleteFromIncompleteList = function deleteFromIncompleteList(target) {
-  document.getElementById("incomplete-list").removeChild(target);
 };
 document.getElementById("add-button").addEventListener("click", function () {
   return onClickAdd();
