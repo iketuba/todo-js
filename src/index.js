@@ -17,7 +17,9 @@ const onClickAdd = () => {
   const completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", () => {
-    alert("完了");
+    //
+    const completeTarget = completeButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(completeTarget);
   });
 
   // button(削除)生成

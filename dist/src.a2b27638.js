@@ -193,7 +193,9 @@ var onClickAdd = function onClickAdd() {
   var completeButton = document.createElement("button");
   completeButton.innerText = "完了";
   completeButton.addEventListener("click", function () {
-    alert("完了");
+    //
+    var completeTarget = completeButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(completeTarget);
   });
 
   // button(削除)生成
